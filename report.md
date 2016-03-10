@@ -1,8 +1,8 @@
 UECM3033 Assignment #2 Report
 ========================================================
 
-- Prepared by: ** Put your name here**
-- Tutorial Group: T2/T3
+- Prepared by: Chai Kun Ting
+- Tutorial Group: T3
 
 --------------------------------------------------------
 
@@ -38,8 +38,9 @@ these pictures from `task2.py`.
 In the code task2, two groups of 4 pictures will be plot. Each group contain the original color type, red, green and blue. The first group of picture is the original set, while the second group is the lower resolution pictures.
 
 What is a sparse matrix?
+Sparse matrix is a matrix which most of the element is zero. in our case, after we keep the first 30 non zero element and set other elements to be zero, we change the dimension of the sigma from (800,1) to (800,1000) which created a sparse matrix of (800,1000) dimension matrix. This matrix is used for dot multiplication as mention above. Because the sparse matrix most elements is zero, this eventually help to make the lower resolutuon pictures.
 
 
 -----------------------------------
 
-<sup>last modified: change your date here</sup>
+<sup>last modified: 10/3/2016</sup>
