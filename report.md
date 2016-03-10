@@ -17,13 +17,12 @@ Explain your selection criteria here.
 Explain how you implement your `task1.py` here.
 
 ---------------------------------------------------------
-
+## Task 2 -- SVD method and image compression
 -Put here your picture file (Lenna.png)
  -
   ![SnakeDance.png](SnakeDance.png)
   
- -How many non zero element in $\Sigma$?
- -All elements in $\Sigma$ is non zero element
+ 
  +## Zero elements in $\Sigma$
  +Q: How many non zero element in $\Sigma$?
  +A: All elements in $\Sigma$ are non zero elements
