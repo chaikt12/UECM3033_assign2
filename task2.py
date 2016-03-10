@@ -17,10 +17,10 @@ def image_svd(n):
     g1, g2, g3 = linalg.svd(g)
     b1, b2, b3 = linalg.svd(b)
     
-    #check the number of zero elements in each color of sigma
-    r2_0=(r2==0).sum()
-    g2_0=(g2==0).sum()
-    b2_0=(b2==0).sum()
+    #check the number of non zero elements in each color of sigma
+    r2_0=(r2!=0).sum()
+    g2_0=(g2!=0).sum()
+    b2_0=(b2!=0).sum()
     print(r2_0,g2_0,b2_0)
     
     # keeping first n none zero elements
@@ -72,7 +72,7 @@ ax4.imshow(b, cmap = 'Blues')
 plt.show()
 
 #keep the first n none zero elements in sigma.input n into image_svd.
-image_svd(200) 
+image_svd(10) 
 
 
 
