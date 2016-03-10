@@ -11,7 +11,11 @@ def LUdecomp(A):
                 A[i, k+1:n] = A[i, k+1:n] - lam * A[k, k+1:n]
                 A[i, k] = lam
         return A
-
+def omegafind(A,D):
+    K = np.linalg.inv(D).dot(D-A)
+    p = max(np.linalg.eigvals(K));
+    omega = 2*(1-np.sqrt(1-p**2))/p**2
+    return omega;
 
 def lu(A,b):
       A=LUdecomp(A)
@@ -25,23 +29,30 @@ def lu(A,b):
        
 def sor(A, b):
     sol = []
-    omega = 2/(1+np.sqrt(1-max(np.linalg.eigvals(A))))
+    D = np.zeros_like(A)
+    omega=omegafind(A,D)
     
     x = np.zeros_like(b)
     for itr in range(ITERATION_LIMIT):
         for j in range(len(b)):
             sums = np.dot( A[j,:], x )
             x[j] = x[j] + omega*(b[j]-sums)/A[j,j]
-    # Edit here to implement your code
+    
     return list(sol)
 
 def solve(A, b):
+    condition = True 
+    condition = False
     try:       
         np.linalg.cholesky(A)
     except np.linalg.linalg.LinAlgError :
-        print('Solve by lu')
+        condition = True
+    if condition:
+        print('Solve by lu(A,b)')
         return lu(A,b)
-    return sor(A,b)
+    else:
+        print('Solve by sor(A,b)')
+        return sor(A,b)
 
 if __name__ == "__main__":
     ## import checker
