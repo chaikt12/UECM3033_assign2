@@ -27,7 +27,12 @@ Q: How many non zero element in $\Sigma$?
 A: All elements in $\Sigma$ are non zero elements
 
 ### Generating pictures from `task2.py`
-![figure_2.png](figure_2.png)
+![resolution30.png](resolution30.png)
+##resolution of 30
+
+### Generating pictures from `task2.py`
+![resolution200.png](resolution200.png)
+##resolution of 200
 
 1. First, we need to read the SnakeDance.jpeg into img where it contain 3 matrixs, which is r,g and b. Each r,g and b is a 3 dimensions matrix. We further decomposes each matrixs it into U, $\Sigma$ and  V, which is r1,r2 and r3 for the original red by using linalg.svd. Repeat the process for green and blue, namely g and b.
 
