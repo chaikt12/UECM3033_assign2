@@ -13,9 +13,9 @@ The reports, codes and supporting documents are uploaded to Github at:
 [https://github.com/chaikt12/UECM3033_assign2](https://github.com/your_github_id/UECM3033_assign2)
 
 ### Selection criteria ( LU or SOR )
-
+The condition is set to be np.count_nonzero(A) > 1/2*len(A). If the none zero elements in matrix A is greater than half of the length of matrix A, then use lu method
 ### Implementation for `task1.py`
-
+In task 1, the self-defined function lu(A,b) take in matrix A and b. Inside the lu(A,b), there is a function call Ludecomp(A) which take in matrix A. This function will make matrix A into LU matrix. lu(A,b) then solve it to return A and b. For sor(A,b), we set the omega to be 1.03, which is within the range of 1<omega<2 that will converge for any initial vector if A matrix is symmetric and positive definite. This procedures called under-relaxation method.If the omega<1, they are called over-relaxation method. They are used to accelerate the convergence for the system that are convergent by the Gauss-Seidel technique.  If omega is greater than 2 , SOR method will diverge. The iteration is start with x(0) zero vector. We will use the intial x(0) vector to find next x(j) until the it loops until the iteration limit. In the main section, the matrix A and b will move into np.linalg.solve(A,b) and solve(A,b) to check with the condition.
 ---------------------------------------------------------
 
 ## Task 2 -- SVD method and image compression
