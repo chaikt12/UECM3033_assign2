@@ -25,7 +25,7 @@ def lu(A,b):
        
 def sor(A, b):
     sol = []
-    omega = 1.03
+    omega = 2/(1+np.sqrt(1-max(np.linalg.eigvals(A))))
     
     x = np.zeros_like(b)
     for itr in range(ITERATION_LIMIT):
@@ -36,13 +36,12 @@ def sor(A, b):
     return list(sol)
 
 def solve(A, b):
-    condition = np.count_nonzero(A) > 1/2 *len(A)  # State and implement your condition here
-    if condition:
-        print('Solve by lu(A,b)')
+    try:       
+        np.linalg.cholesky(A)
+    except np.linalg.linalg.LinAlgError :
+        print('Solve by lu')
         return lu(A,b)
-    else:
-        print('Solve by sor(A,b)')
-        return sor(A,b)
+    return sor(A,b)
 
 if __name__ == "__main__":
     ## import checker
