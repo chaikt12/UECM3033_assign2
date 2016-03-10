@@ -39,8 +39,7 @@ def image_svd(n):
     r_new = np.dot(r1, np.dot(r2, r3))
     g_new = np.dot(g1, np.dot(g2, g3))
     b_new = np.dot(b1, np.dot(b2, b3))
-    print(r_new.shape)    
-    
+      
     img[:,:,0]=r_new
     img[:,:,1]=g_new
     img[:,:,2]=b_new
