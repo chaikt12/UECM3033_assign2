@@ -12,16 +12,18 @@ def image_svd(n):
     # generate rgb array
     [r,g,b] = [img[:,:,i] for i in range(3)]
         
-    # generage sigma, U and V
+    # generate U, sigma,and V for red, green and blue matrix
+    #noted that r1=U, r2=sigma, r3=V, same goes to green and blue matrix
     r1, r2, r3 = linalg.svd(r)
     g1, g2, g3 = linalg.svd(g)
     b1, b2, b3 = linalg.svd(b)
     
-    #check the number of non zero elements in each color of sigma
-    r2_0=(r2!=0).sum()
-    g2_0=(g2!=0).sum()
-    b2_0=(b2!=0).sum()
-    print(r2_0,g2_0,b2_0)
+    #check the number of non zero elements in each color of decompose sigma
+    r2_nonzero=(r2!=0).sum()
+    g2_nonzero=(g2!=0).sum()
+    b2_nonzero=(b2!=0).sum()
+    print("The number of non zero elements in decompose sigma of red, green, blue matrices are", r2_nonzero,"," ,g2_nonzero,"and" ,b2_nonzero, "respectively.")
+    
     
     # keeping first n none zero elements
     r2[n:800] = np.zeros_like(r2[n:800])
@@ -53,7 +55,8 @@ def image_svd(n):
     ax2.imshow(r_new, cmap = 'Reds')
     ax3.imshow(g_new, cmap = 'Greens')
     ax4.imshow(b_new, cmap = 'Blues')
-    plt.show()
+    plt.show() 
+    
 
 
 #the original set
@@ -71,8 +74,11 @@ ax3.imshow(g, cmap = 'Greens')
 ax4.imshow(b, cmap = 'Blues')
 plt.show()
 
-#keep the first n none zero elements in sigma.input n into image_svd.
-image_svd(10) 
 
+#keep the first n none zero elements in sigma.input n into image_svd.
+#image_svd(30)
+
+
+image_svd(200)
 
 
