@@ -13,8 +13,8 @@ def LUdecomp(A):
         return A
 def omegafind(A,D):
     K = np.linalg.inv(D).dot(D-A)
-    p = max(np.linalg.eigvals(K));
-    omega = 2*(1-np.sqrt(1-p**2))/p**2
+    eig = max(np.linalg.eigvals(K));
+    omega = 2*(1-np.sqrt(1-eig**2))/eig**2
     return omega;
 
 def lu(A,b):
