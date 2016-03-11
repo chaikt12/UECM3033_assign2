@@ -17,6 +17,7 @@ def omegafind(A,D):
     omega = 2*(1-np.sqrt(1-eig**2))/eig**2
     return omega;
 
+
 def lu(A,b):
       A=LUdecomp(A)
       n = len(A)
@@ -29,14 +30,29 @@ def lu(A,b):
        
 def sor(A, b):
     sol = []
-    D = np.zeros_like(A)
-    omega=omegafind(A,D)
     
+    n = len(A)
+    D = np.zeros_like(A)
+    L = np.zeros_like(A)
+    
+    for i in range(0,n):
+        D[i][i] = A[i][i];
+        
+    for i in range(0,n):
+        for j in range(0,i):
+            L[i][j] = -A[i][j];
+    
+    omega = omegafind(A,D)   
+    Q = D/omega -L
+    Tj = np.linalg.inv(Q).dot(Q-A)
+    c = np.linalg.inv(Q).dot(b)
     x = np.zeros_like(b)
+    
+
     for itr in range(ITERATION_LIMIT):
-        for j in range(len(b)):
-            sums = np.dot( A[j,:], x )
-            x[j] = x[j] + omega*(b[j]-sums)/A[j,j]
+        x=Tj.dot(x) + c;
+
+    sol = x
     
     return list(sol)
 
@@ -62,8 +78,7 @@ if __name__ == "__main__":
                   [8,3,2], 
                   [1,5,1]]).astype(float)
     b = np.array([9, 13, 7]).astype(float)
-    
-    sol = np.linalg.solve(A,b)
+    sol=np.linalg.solve(A,b)
     solve(A,b)
     print(sol)
     
@@ -74,6 +89,6 @@ if __name__ == "__main__":
                   [-3782, 3840, 2464, -8389, 9781,-3334],
                   [-6903, 5610, 4306, 5548, -1380, 3539.]]).astype(float)
     b =np.array( [ 17603,  -63286,   56563,  -26523.5, 103396.5, -27906]).astype(float)
-    sol = np.linalg.solve(A,b)
+    sol=np.linalg.solve(A,b)
     solve(A,b)
     print(sol)
